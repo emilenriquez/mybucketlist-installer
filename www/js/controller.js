@@ -1,7 +1,7 @@
-angular.module('bucketList.controllers', [])
+angular.module('bucketList.controllers', ['ionic'])
     .controller('SignInCtrl', [
         '$scope', '$rootScope', '$firebaseAuth', '$window',
-        function($scope, $rootScope, $firebaseAuth, $window) {
+        function($scope, $rootScope, $firebaseAuth, $window,$ionicLoading) {
             // check session
             $rootScope.checkSession();
 
@@ -29,6 +29,7 @@ angular.module('bucketList.controllers', [])
                     $rootScope.hide();
                     if (error.code == 'INVALID_EMAIL') {
                         $rootScope.notify('Invalid Email Address');
+                        console.log('invalid email');
                     } else if (error.code == 'INVALID_PASSWORD') {
                         $rootScope.notify('Invalid Password');
                     } else if (error.code == 'INVALID_USER') {
